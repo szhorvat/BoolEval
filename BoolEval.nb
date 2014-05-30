@@ -1,1 +1,126 @@
-Notebook[{}]
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Usage examples", "Section"],
+
+Cell[BoxData[
+ RowBox[{"<<", "BoolEval`"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"array", "=", 
+   RowBox[{"Range", "[", "10", "]"}]}], ";"}]], "Input"],
+
+Cell["\<\
+Compute an array which has 1s where the condition is satisfied and zeros \
+elsewhere:\
+\>", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolEval", "[", 
+  RowBox[{"array", ">", "3"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0", ",", "0", ",", "0", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", 
+   ",", "1", ",", "1"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell["Filter an array on a condition:", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolPick", "[", 
+  RowBox[{"array", ",", 
+   RowBox[{"array", ">", "3"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"4", ",", "5", ",", "6", ",", "7", ",", "8", ",", "9", ",", "10"}], 
+  "}"}]], "Output"]
+}, Open  ]],
+
+Cell["Use more complex conditions:", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolPick", "[", 
+  RowBox[{"array", ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Mod", "[", 
+      RowBox[{"array", ",", "3"}], "]"}], "\[Equal]", "1"}], "&&", 
+    RowBox[{"array", "<", "5"}]}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "4"}], "}"}]], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Performance", "Section"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"array", "=", 
+   RowBox[{"Range", "[", "1000000", "]"}]}], ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"result1", "=", 
+    RowBox[{"Select", "[", 
+     RowBox[{"array", ",", 
+      RowBox[{
+       RowBox[{"#", ">", "123456"}], "&"}]}], "]"}]}], ";"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.5400960000000000205133687813940923661`5.753070874148375", ",", "Null"}], 
+  "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"AbsoluteTiming", "[", 
+  RowBox[{
+   RowBox[{"result2", "=", 
+    RowBox[{"BoolPick", "[", 
+     RowBox[{"array", ",", 
+      RowBox[{"array", ">", "123456"}]}], "]"}]}], ";"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.11029200000000000114752651825256180018`5.0631439254309845", ",", 
+   "Null"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"result1", "===", "result2"}]], "Input"],
+
+Cell[BoxData["True"], "Output"]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{808, 911},
+WindowMargins->{{876, Automatic}, {Automatic, 198}},
+PrivateNotebookOptions->{"FileOutlineCache"->False},
+TrackCellChangeTimes->False,
+FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 17, \
+2014)",
+StyleDefinitions->"Default.nb"
+]
