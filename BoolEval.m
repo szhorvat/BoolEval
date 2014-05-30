@@ -28,9 +28,9 @@ unequal[a__] := Times @@ (unequal @@@ Subsets[{a}, {2}])
 
 
 BoolEval[condition_] :=
-    Unevaluated[condition] /. {Less -> less, Greater -> greater,
+    Unevaluated[condition] /. {arr_ ? ArrayQ :> arr, Less -> less, Greater -> greater,
       LessEqual -> lesseq, Equal -> equal, Unequal -> unequal,
-      GreaterEqual -> greatereq, Or -> Composition[Unitize, Plus],
+      GreaterEqual -> greatereq, Or -> (Unitize@Plus[##]&),
       And -> Times, Not -> (1 - # &), True -> 1, False -> 0}
 
 
