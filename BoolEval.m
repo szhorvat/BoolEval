@@ -26,12 +26,16 @@ greatereq[a_, b_, c__] := greatereq[a, b] greatereq[b, c]
 
 unequal[a__] := Times @@ (unequal @@@ Subsets[{a}, {2}])
 
+rules = Dispatch[
+  {arr_ ? ArrayQ :> arr,
+    Less -> less, LessEqual -> lesseq,
+    Greater -> greater, GreaterEqual -> greatereq,
+    Equal -> equal, Unequal -> unequal,
+    Or -> (Unitize@Plus[##]&), And -> Times, Not -> (1 - # &),
+    True -> 1, False -> 0}
+  ];
 
-BoolEval[condition_] :=
-    Unevaluated[condition] /. {arr_ ? ArrayQ :> arr, Less -> less, Greater -> greater,
-      LessEqual -> lesseq, Equal -> equal, Unequal -> unequal,
-      GreaterEqual -> greatereq, Or -> (Unitize@Plus[##]&),
-      And -> Times, Not -> (1 - # &), True -> 1, False -> 0}
+BoolEval[condition_] := Unevaluated[condition] /. rules
 
 
 BoolPick[array_, condition_] :=
