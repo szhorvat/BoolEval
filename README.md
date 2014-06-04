@@ -15,3 +15,7 @@ Simply drop [BoolEval.m](https://bitbucket.org/szhorvat/booleval/raw/32f0c87fc50
 then load it as
 
     << BoolEval`
+
+###Feedback
+
+Feedback is welcome at szhorvat at gmail.com
