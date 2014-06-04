@@ -8,7 +8,7 @@ Inspiration: http://mathematica.stackexchange.com/q/2821/12
 
 ###Installation
 
-Simply drop `BoolEval.m` in the directory opened by 
+Simply drop [BoolEval.m](https://bitbucket.org/szhorvat/booleval/raw/32f0c87fc507d99980d5ed36c8d8cc2fd1dce4fa/BoolEval.m) in the directory opened by 
 
     SystemOpen@FileNameJoin[{$UserBaseDirectory, "Applications"}]
 
