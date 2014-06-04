@@ -18,4 +18,4 @@ then load it as
 
 ###Feedback
 
-Feedback is welcome at szhorvat at gmail.com
+Feedback is welcome at `szhorvat at gmail.com`.
