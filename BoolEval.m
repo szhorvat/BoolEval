@@ -35,8 +35,8 @@ rules = Dispatch[
     True -> 1, False -> 0}
   ];
 
-BoolEval[condition_] := Unevaluated[condition] /. rules
 
+BoolEval[condition_] := condition /. rules
 
 BoolPick[array_, condition_] :=
     Pick[array,
