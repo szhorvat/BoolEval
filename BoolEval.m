@@ -9,6 +9,7 @@ BeginPackage["BoolEval`"]
 BoolEval::usage = "BoolEval[array > value] replaces elements of the numerical array 'array' which are greater than 'value' with 1, and the rest with 0.
 BoolEval[condition] takes a condition expressed in terms of >, >=, <, <=, ==, != and logical operators, and evaluates it for each element of the arrays appearing in the condition. The result is returned as a Boolean array of 0s and 1s."
 BoolPick::usage = "BoolPick[array, condition] will return the elements of a numerical array for which condition is True."
+BoolCount::usage = "BoolCount[condition] counts the number of elements satisfying the array condition."
 
 Begin["`Private`"] (* Begin Private Context *)
 
@@ -44,6 +45,8 @@ BoolPick[array_, condition_] :=
       BoolEval[condition],
       1
     ]
+
+BoolCount[condition_] := Total@BoolEval[condition]
 
 End[] (* End Private Context *)
 
