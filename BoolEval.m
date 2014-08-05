@@ -46,7 +46,7 @@ BoolPick[array_, condition_] :=
       1
     ]
 
-BoolCount[condition_] := Total@BoolEval[condition]
+BoolCount[condition_] := Total[BoolEval[condition], Infinity]
 
 End[] (* End Private Context *)
 
