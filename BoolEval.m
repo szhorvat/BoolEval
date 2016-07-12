@@ -13,12 +13,12 @@ BoolCount::usage = "BoolCount[condition] counts the number of elements satisfyin
 
 Begin["`Private`"] (* Begin Private Context *)
 
-greatereq[a_, b_] := UnitStep[a - b]
-lesseq[a_, b_] := UnitStep[b - a]
-greater[a_, b_] := 1 - lesseq[a, b]
-less[a_, b_] := 1 - greatereq[a, b]
-unequal[a_, b_] := Unitize[a - b]
-equal[a_, b_] := 1 - unequal[a, b]
+greatereq[a_, b_] := UnitStep@Subtract[a, b]
+lesseq[a_, b_] := UnitStep@Subtract[b, a]
+greater[a_, b_] := Subtract[1, lesseq[a, b]]
+less[a_, b_] := Subtract[1, greatereq[a, b]]
+unequal[a_, b_] := Unitize@Subtract[a, b]
+equal[a_, b_] := Subtract[1, unequal[a, b]]
 
 equal[a_, b_, c__] := equal[a, b] equal[b, c]
 less[a_, b_, c__] := less[a, b] less[b, c]
@@ -33,7 +33,7 @@ rules = Dispatch[
     Less -> less, LessEqual -> lesseq,
     Greater -> greater, GreaterEqual -> greatereq,
     Equal -> equal, Unequal -> unequal,
-    Or -> (Unitize@Plus[##]&), And -> Times, Not -> (1 - # &),
+    Or -> (Unitize@Plus[##]&), And -> Times, Not -> (Subtract[1, #] &),
     True -> 1, False -> 0}
   ];
 
