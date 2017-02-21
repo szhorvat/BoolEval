@@ -28,24 +28,34 @@ greatereq[a_, b_, c__] := greatereq[a, b] greatereq[b, c]
 
 unequal[a__] := Times @@ (unequal @@@ Subsets[{a}, {2}])
 
-rules = Dispatch[
-  {arr_ ? ArrayQ :> arr,
+rules = Dispatch[{
     Less -> less, LessEqual -> lesseq,
     Greater -> greater, GreaterEqual -> greatereq,
     Equal -> equal, Unequal -> unequal,
     Or -> (Unitize@Plus[##]&), And -> Times, Not -> (Subtract[1, #] &),
-    True -> 1, False -> 0}
-  ];
+    Nor -> (Subtract[1, Unitize@Plus[##]]&), Nand -> (Subtract[1, Times[##]]&),
+    Xor -> (Mod[Plus[##], 2]&), Xnor -> (Subtract[1, Mod[Plus[##], 2]]&),
+    True -> 1, False -> 0
+  }];
 
 
-BoolEval[condition_] := condition /. rules
+(* Convert Inequality expressions to canonical form, e.g. a < b > c  ==>  a < b && b > c *)
+ineq = Dispatch[{
+    HoldPattern@Inequality[a_, op_, b_] :> True,
+    HoldPattern@Inequality[a_, op_, b_, rest__] :> op[a, b] && Inequality[b, rest]
+  }];
 
+SetAttributes[BoolEval, HoldAll]
+BoolEval[condition_] := First[Hold[condition] //. ineq /. rules]
+
+SetAttributes[BoolPick, HoldRest]
 BoolPick[array_, condition_] :=
     Pick[array,
       BoolEval[condition],
       1
     ]
 
+SetAttributes[BoolCount, HoldAll]
 BoolCount[condition_] := Total[BoolEval[condition], Infinity]
 
 End[] (* End Private Context *)

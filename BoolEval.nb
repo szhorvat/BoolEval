@@ -80,6 +80,21 @@ Cell[BoxData[
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"1", ",", "4"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell["Count how many elements satisfy a condition:", "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolCount", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Mod", "[", 
+     RowBox[{"array", ",", "3"}], "]"}], "\[Equal]", "1"}], "&&", 
+   RowBox[{"array", "<", "5"}]}], "]"}]], "Input"],
+
+Cell[BoxData["2"], "Output"]
 }, Open  ]]
 }, Open  ]],
 
@@ -105,9 +120,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{
-  "0.5400960000000000205133687813940923661`5.753070874148375", ",", "Null"}], 
-  "}"}]], "Output"]
+  RowBox[{"0.456197`", ",", "Null"}], "}"}]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -122,9 +135,7 @@ Cell[BoxData[
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{
-  "0.11029200000000000114752651825256180018`5.0631439254309845", ",", 
-   "Null"}], "}"}]], "Output"]
+  RowBox[{"0.022627`", ",", "Null"}], "}"}]], "Output"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -134,6 +145,127 @@ Cell[BoxData[
 
 Cell[BoxData["True"], "Output"]
 }, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Possible issues", "Section"],
+
+Cell[TextData[{
+ "The meaning of relational operators (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{">", 
+    RowBox[{",", 
+     RowBox[{"\[GreaterEqual]", 
+      RowBox[{",", "\[Equal]"}]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", etc.) and logical operators (",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"&&", 
+    RowBox[{",", 
+     RowBox[{"||", 
+      RowBox[{",", "!"}]}]}]}], TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ", etc.) is overloaded within ",
+ Cell[BoxData[
+  FormBox["BoolEval", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". The expression passed to BoolEval should be considered a domain specific \
+language where the behaviour of these operations is modified."
+}], "Text"],
+
+Cell[TextData[{
+ "For this reason, any program code that uses these operations must be \
+avoided within ",
+ Cell[BoxData[
+  FormBox["BoolEval", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ ". For example, the following will fail without error messages:"
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolEval", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Select", "[", 
+    RowBox[{
+     RowBox[{"Range", "[", "100", "]"}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"OddQ", "[", "#", "]"}], "||", 
+       RowBox[{"#", "\[Equal]", "2"}]}], "&"}]}], "]"}], "<", "10"}], 
+  "\[IndentingNewLine]", "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", "}"}]], "Output"]
+}, Open  ]],
+
+Cell[TextData[{
+ "The solution is to compute the array first, and use it on ",
+ Cell[BoxData[
+  FormBox["BoolEval", TraditionalForm]],
+  FormatType->"TraditionalForm"],
+ " afterwards:"
+}], "Text"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"array", "=", 
+  RowBox[{"Select", "[", 
+   RowBox[{
+    RowBox[{"Range", "[", "100", "]"}], ",", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"OddQ", "[", "#", "]"}], "||", 
+      RowBox[{"#", "\[Equal]", "2"}]}], "&"}]}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "5", ",", "7", ",", "9", ",", "11", ",", "13",
+    ",", "15", ",", "17", ",", "19", ",", "21", ",", "23", ",", "25", ",", 
+   "27", ",", "29", ",", "31", ",", "33", ",", "35", ",", "37", ",", "39", 
+   ",", "41", ",", "43", ",", "45", ",", "47", ",", "49", ",", "51", ",", 
+   "53", ",", "55", ",", "57", ",", "59", ",", "61", ",", "63", ",", "65", 
+   ",", "67", ",", "69", ",", "71", ",", "73", ",", "75", ",", "77", ",", 
+   "79", ",", "81", ",", "83", ",", "85", ",", "87", ",", "89", ",", "91", 
+   ",", "93", ",", "95", ",", "97", ",", "99"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolEval", "[", 
+  RowBox[{"array", "<", "10"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "1", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", 
+   ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", 
+   "0", ",", "0", ",", "0", ",", "0", ",", "0", ",", "0"}], "}"}]], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolPick", "[", 
+  RowBox[{"array", ",", 
+   RowBox[{"array", "<", "10"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", "2", ",", "3", ",", "5", ",", "7", ",", "9"}], 
+  "}"}]], "Output"]
+}, Open  ]]
 }, Open  ]]
 }, Open  ]]
 },
@@ -141,8 +273,8 @@ WindowSize->{808, 911},
 WindowMargins->{{Automatic, 213}, {150, Automatic}},
 PrivateNotebookOptions->{"FileOutlineCache"->False},
 TrackCellChangeTimes->False,
-FrontEndVersion->"9.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (January 25, \
-2013)",
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+21, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 
