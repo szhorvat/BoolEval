@@ -43,16 +43,17 @@ rules = Dispatch[{
     True -> 1, False -> 0
   }];
 
-
 (* Convert Inequality expressions to canonical form, e.g. a < b > c  ==>  a < b && b > c *)
 ineq = Dispatch[{
     HoldPattern@Inequality[a_, op_, b_] :> op[a, b],
     HoldPattern@Inequality[a_, op_, b_, rest__] :> op[a, b] && Inequality[b, rest]
   }];
 
+SyntaxInformation[BoolEval] = {"ArgumentsPattern" -> {_}};
 SetAttributes[BoolEval, HoldAll]
 BoolEval[condition_] := First[Hold[condition] //. ineq /. rules]
 
+SyntaxInformation[BoolPick] = {"ArgumentsPattern" -> {_, _}};
 SetAttributes[BoolPick, HoldRest]
 BoolPick[array_, condition_] :=
     Pick[array,
@@ -60,6 +61,7 @@ BoolPick[array_, condition_] :=
       1
     ]
 
+SyntaxInformation[BoolCount] = {"ArgumentsPattern" -> {_}};
 SetAttributes[BoolCount, HoldAll]
 BoolCount[condition_] := Total[BoolEval[condition], Infinity]
 
