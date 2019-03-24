@@ -34,6 +34,7 @@ greaterEq[a_, b_, c__] := greaterEq[a, b] greaterEq[b, c]
 unequal[a__] := Times @@ (unequal @@@ Subsets[{a}, {2}])
 
 rules = Dispatch[{
+	im_Image :> im, au_System`Audio :> au,
     Less -> less, LessEqual -> lessEq,
     Greater -> greater, GreaterEqual -> greaterEq,
     Equal -> equal, Unequal -> unequal,
