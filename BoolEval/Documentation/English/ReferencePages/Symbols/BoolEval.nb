@@ -254,6 +254,9 @@ Cell[BoxData[
   $Line = 0; Null]], "PrimaryExamplesSection",
  CellID->880084151],
 
+Cell["This loads the package.", "ExampleText",
+ CellID->1430781738],
+
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<BoolEval`\>\"", "]"}]], "Input",
  CellLabel->"In[8]:=",

@@ -270,6 +270,9 @@ Cell[BoxData[
  CellID->880084151,
  ExpressionUUID -> "814e1ec4-cc0f-4b1f-8463-d560afd8ccfe"],
 
+Cell["This loads the package.", "ExampleText",
+ CellID->1430781738],
+
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<BoolEval`\>\"", "]"}]], "Input",
  CellID->1876675057,
@@ -424,3 +427,4 @@ FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 4, \
 StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "FunctionPageStyles.nb", 
   CharacterEncoding -> "UTF-8"]
 ]
+
