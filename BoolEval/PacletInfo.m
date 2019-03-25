@@ -2,12 +2,11 @@
 
 Paclet[
     Name -> "BoolEval",
-    Version -> "0.9.1",
+    Version -> "1.0.0",
     MathematicaVersion -> "10.0+",
     Description -> "Fast vectorized comparison and Boolean operations.",
     Creator -> "Szabolcs Horv\[AAcute]t <szhorvat@gmail.com>",
     URL -> "http://szhorvat.net/mathematica/BoolEval",
-    Loading -> Manual,
     Extensions -> 
         {
             {"Kernel",
