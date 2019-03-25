@@ -87,7 +87,7 @@ MRun[
 ResetDirectory[];
 
 
-(* CopyFile["LICENSE.txt", FileNameJoin[{$appDir, "LICENSE.txt"}]] *)
+CopyFile["LICENSE.txt", FileNameJoin[{$appDir, "LICENSE.txt"}]]
 
 
 Export[FileNameJoin[{$appDir, $appName <> ".m"}], template[versionData], "String"]
