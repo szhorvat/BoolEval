@@ -2,7 +2,7 @@
 
 Paclet[
     Name -> "BoolEval",
-    Version -> "1.0.0",
+    Version -> "1.0.1",
     MathematicaVersion -> "10.0+",
     Description -> "Fast vectorized comparison and Boolean operations.",
     Creator -> "Szabolcs Horv\[AAcute]t <szhorvat@gmail.com>",
