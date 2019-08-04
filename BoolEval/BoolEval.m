@@ -34,17 +34,26 @@ greaterEq[a_, b_, c__] := greaterEq[a, b] greaterEq[b, c]
 unequal[a__] := Times @@ (unequal @@@ Subsets[{a}, {2}])
 
 rules = Dispatch[{
-	im_Image :> im, au_System`Audio :> au,
+    (* Do not descend into the innards of Image/Audio, so they are safe to use. *)
+    (* Note that options within these may contain True/False,
+       which must not be converted to 1/0. *)
+    im_Image :> im, au_System`Audio :> au,
+
+    (* Relational operators *)
     Less -> less, LessEqual -> lessEq,
     Greater -> greater, GreaterEqual -> greaterEq,
     Equal -> equal, Unequal -> unequal,
+
+    (* Boolean operators *)
     Or -> (Unitize@Plus[##]&), And -> Times, Not -> (Subtract[1, #] &),
     Nor -> (Subtract[1, Unitize@Plus[##]]&), Nand -> (Subtract[1, Times[##]]&),
     Xor -> (Mod[Plus[##], 2]&), Xnor -> (Subtract[1, Mod[Plus[##], 2]]&),
+
+    (* Boolean values *)
     True -> 1, False -> 0
   }];
 
-(* Convert Inequality expressions to canonical form, e.g. a < b > c  ==>  a < b && b > c *)
+(* Convert Inequality expressions to canonical form, e.g. a < b > c  ->  a < b && b > c *)
 ineq = Dispatch[{
     HoldPattern@Inequality[a_, op_, b_] :> op[a, b],
     HoldPattern@Inequality[a_, op_, b_, rest__] :> op[a, b] && Inequality[b, rest]
