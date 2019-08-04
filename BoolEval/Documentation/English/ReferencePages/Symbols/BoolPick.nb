@@ -217,7 +217,15 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["BoolCount",
    BaseStyle->"Link",
-   ButtonData->"paclet:BoolEval/ref/BoolCount"]], "InlineFormula"]
+   ButtonData->"paclet:BoolEval/ref/BoolCount"]], "InlineFormula"],
+ " \[EmptyVerySmallSquare] ",
+ Cell[BoxData[
+  ButtonBox["Select",
+   BaseStyle->"Link"]], "InlineFormula"],
+ " \[EmptyVerySmallSquare] ",
+ Cell[BoxData[
+  ButtonBox["Cases",
+   BaseStyle->"Link"]], "InlineFormula"]
 }], "SeeAlso",
  CellID->929782353]
 }, Open  ]],
@@ -663,10 +671,102 @@ Cell[BoxData[
   $Line = 0; Null]], "ExampleSection",
  CellID->258228157],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  InterpretationBox[Cell["Properties & Relations", "ExampleSection"],
   $Line = 0; Null]], "ExampleSection",
  CellID->2123667759],
+
+Cell[TextData[{
+ "The following ",
+ Cell[BoxData[
+  ButtonBox["BoolPick",
+   BaseStyle->"Link",
+   ButtonData->"paclet:BoolEval/ref/BoolPick"]], "InlineFormula"],
+ ", ",
+ ButtonBox["Select",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Select"],
+ " and ",
+ ButtonBox["Cases",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Cases"],
+ " expressions are equivalent."
+}], "ExampleText",
+ CellID->1681580952],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"arr", "=", 
+   RowBox[{"Range", "[", 
+    RowBox[{
+     RowBox[{"-", "5"}], ",", "5"}], "]"}]}], ";"}]], "Input",
+ CellLabel->"In[12]:=",
+ CellID->673003577],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"BoolPick", "[", 
+  RowBox[{"arr", ",", 
+   RowBox[{
+    RowBox[{"arr", "^", "2"}], ">", "4"}]}], "]"}]], "Input",
+ CellLabel->"In[13]:=",
+ CellID->1373450228],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "5"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "3"}], ",", "3", ",", "4", ",", "5"}], "}"}]], "Output",
+ CellLabel->"Out[13]=",
+ CellID->658720717]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Select", "[", 
+  RowBox[{"arr", ",", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"#", "^", "2"}], ">", "4"}], "&"}]}], "]"}]], "Input",
+ CellLabel->"In[16]:=",
+ CellID->1415953834],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "5"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "3"}], ",", "3", ",", "4", ",", "5"}], "}"}]], "Output",
+ CellLabel->"Out[16]=",
+ CellID->1864167288]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Cases", "[", 
+  RowBox[{"arr", ",", 
+   RowBox[{"x_", "/;", 
+    RowBox[{
+     RowBox[{"x", "^", "2"}], ">", "4"}]}]}], "]"}]], "Input",
+ CellLabel->"In[15]:=",
+ CellID->253962631],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "5"}], ",", 
+   RowBox[{"-", "4"}], ",", 
+   RowBox[{"-", "3"}], ",", "3", ",", "4", ",", "5"}], "}"}]], "Output",
+ CellLabel->"Out[15]=",
+ CellID->1803778610]
+}, Open  ]]
+}, Open  ]],
 
 Cell[BoxData[
  InterpretationBox[Cell["Possible Issues", "ExampleSection"],

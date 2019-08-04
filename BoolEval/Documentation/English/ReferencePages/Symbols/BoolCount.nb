@@ -230,17 +230,19 @@ Cell[TextData[{
  Cell[BoxData[
   ButtonBox["BoolEval",
    BaseStyle->"Link",
-   ButtonData->"paclet:BoolEval/ref/BoolEval"]], "InlineFormula",
-  ExpressionUUID -> "6e339dd4-ca60-4ec5-b5f9-ef22d2b73b70"],
+   ButtonData->"paclet:BoolEval/ref/BoolEval"]], "InlineFormula"],
  " \[EmptyVerySmallSquare] ",
  Cell[BoxData[
   ButtonBox["BoolPick",
    BaseStyle->"Link",
-   ButtonData->"paclet:BoolEval/ref/BoolPick"]], "InlineFormula",
-  ExpressionUUID -> "4fdc8951-05af-4c18-8b98-ccf2bddbce57"]
+   ButtonData->"paclet:BoolEval/ref/BoolPick"]], "InlineFormula"],
+ " \[EmptyVerySmallSquare] ",
+ Cell[BoxData[
+  ButtonBox["Count",
+   BaseStyle->"Link"]], "InlineFormula"]
 }], "SeeAlso",
  CellID->929782353,
- ExpressionUUID -> "b47117f8-c3c2-4c58-a504-6b538558957e"]
+ $CellContext`ExpressionUUID -> "b47117f8-c3c2-4c58-a504-6b538558957e"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -275,6 +277,7 @@ Cell["This loads the package.", "ExampleText",
 
 Cell[BoxData[
  RowBox[{"Needs", "[", "\"\<BoolEval`\>\"", "]"}]], "Input",
+ CellLabel->"In[8]:=",
  CellID->1876675057,
  ExpressionUUID -> "07f2921e-6a0c-452c-b263-5366043d680e"],
 
@@ -389,12 +392,61 @@ Cell[BoxData[
  CellID->258228157,
  ExpressionUUID -> "f3a45c31-c089-413e-977b-1e9e8ea9074b"],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
  InterpretationBox[Cell["Properties & Relations", "ExampleSection",
    ExpressionUUID -> "9f87cb26-0515-420f-86bd-e4d77b9bb018"],
   $Line = 0; Null]], "ExampleSection",
  CellID->2123667759,
  ExpressionUUID -> "43d9c90c-978c-4a7b-95b2-197ecf3d7728"],
+
+Cell[TextData[{
+ "The following ",
+ Cell[BoxData[
+  ButtonBox["BoolCount",
+   BaseStyle->"Link",
+   ButtonData->"paclet:BoolEval/ref/BoolCount"]], "InlineFormula"],
+ " and ",
+ ButtonBox["Count",
+  BaseStyle->"Link",
+  ButtonData->"paclet:ref/Count"],
+ " expressions are equivalent."
+}], "ExampleText",
+ CellID->1918734338],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"arr", "=", 
+   RowBox[{"RandomReal", "[", 
+    RowBox[{"2", ",", "100"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"BoolCount", "[", 
+  RowBox[{"arr", "<", "0.5"}], "]"}]}], "Input",
+ CellLabel->"In[9]:=",
+ CellID->1506307115],
+
+Cell[BoxData["19"], "Output",
+ CellLabel->"Out[10]=",
+ CellID->1539975163]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Count", "[", 
+  RowBox[{"arr", ",", 
+   RowBox[{"x_", "/;", 
+    RowBox[{"x", "<", "0.5"}]}]}], "]"}]], "Input",
+ CellLabel->"In[11]:=",
+ CellID->1581475465],
+
+Cell[BoxData["19"], "Output",
+ CellLabel->"Out[11]=",
+ CellID->677760368]
+}, Open  ]]
+}, Open  ]],
 
 Cell[BoxData[
  InterpretationBox[Cell["Possible Issues", "ExampleSection",

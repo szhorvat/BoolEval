@@ -171,14 +171,29 @@ have compatible dimensions.\
  CellID->146817712],
 
 Cell[TextData[{
- "Operators must appear literally within the argument of ",
+ "Comparison and logical operators must appear literally within the argument \
+of ",
  Cell[BoxData[
   ButtonBox["BoolEval",
    BaseStyle->"Link",
    ButtonData->"paclet:BoolEval/ref/BoolEval"]], "InlineFormula"],
  "."
 }], "Notes",
- CellID->938774166]
+ CellID->938774166],
+
+Cell[TextData[{
+ "Effectively, ",
+ Cell[BoxData[
+  RowBox[{"BoolEval", "[", 
+   RowBox[{"x", ">", "a"}], "]"}]], "InlineFormula"],
+ " is equivalent to ",
+ Cell[BoxData[
+  RowBox[{"Boole", "@", 
+   RowBox[{"Thread", "[", 
+    RowBox[{"x", ">", "a"}], "]"}]}]], "InlineFormula"],
+ "."
+}], "Notes",
+ CellID->1418751935]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -511,9 +526,8 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell["\<\
-Internally, BoolEval converts comparison and Boolean operators to \
-arithmetical ones. Use a symbolic input to see the generated arithmetic \
-expression.\
+Internally, BoolEval converts comparison and Boolean operators to arithmetic \
+ones. Use a symbolic input to see the generated arithmetic expression.\
 \>", "ExampleText",
  CellID->937574216],
 
@@ -686,7 +700,7 @@ Cell[BoxData[
 }, Open  ]]
 },
 WindowSize->{700, 770},
-WindowMargins->{{231, Automatic}, {-64, Automatic}},
+WindowMargins->{{208, Automatic}, {Automatic, 0}},
 CellContext->"Global`",
 TrackCellChangeTimes->False,
 FrontEndVersion->"10.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (December 4, \

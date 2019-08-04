@@ -116,7 +116,7 @@ Cell["Introduction to BoolEval", "Title",
  ExpressionUUID -> "a7cdda53-89b3-495c-a8b2-a4b8bc619431"],
 
 Cell["\<\
-The BoolEval package makes it easy to vectorize the evaluation of \
+The BoolEval package makes it easy to vectorize the evaluation of array \
 inequalities and equalities. Its main purpose is to achieve better \
 performance than what is possible with built-in functions, while maintaining \
 readability.\
@@ -147,7 +147,7 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell["\<\
-Compute an array which has 1s where the condition is satisfied and zeros \
+Compute an array which has ones where the condition is satisfied and zeros \
 elsewhere.\
 \>", "MathCaption",
  CellID->622212758,
@@ -626,7 +626,7 @@ Cell[TextData[{
 ",
  StyleBox["Mathematica",
   FontSlant->"Italic"],
- " does not provide an easy way to evaluate then out-of-the-box. BoolEval \
+ " does not provide an easy way to evaluate them out-of-the-box. BoolEval \
 tries to fill this gap."
 }], "Text",
  CellID->1720405392,
@@ -843,10 +843,12 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[TextData[{
- "The solution is to compute the array first, and use it on ",
+ "The solution is to compute the array first, and use it in ",
  Cell[BoxData[
-  FormBox["BoolEval", TraditionalForm]],
-  ExpressionUUID -> "83a0b6a1-5491-4c7a-89a8-46ddd0a155ad"],
+  ButtonBox["BoolEval",
+   BaseStyle->"Link",
+   ButtonData->"paclet:BoolEval/ref/BoolEval"]], "InlineFormula",
+  ExpressionUUID -> "9781c47e-f76b-4360-8067-e9319148b58e"],
  " afterwards:"
 }], "Text",
  CellID->412745244,
