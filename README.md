@@ -1,10 +1,16 @@
-# README #
+[![GitHub (pre-)release](https://img.shields.io/github/release/szhorvat/BoolEval/all.svg)](https://github.com/szhorvat/BoolEval/releases)
+[![Github All Releases](https://img.shields.io/github/downloads/szhorvat/BoolEval/total.svg)](https://github.com/szhorvat/BoolEval/releases)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/szhorvat/BoolEval/issues)
+
+# BoolEval
 
 `BoolEval` is a Mathematica package that helps evaluate conditional expressions on numerical arrays, or filter numerical arrays based on conditions.  Is does this without unpacking packed arrays and offers a significant speedup over `Select` and `Cases` while maintaining convenient notation.  It is particularly useful in conjunction with `Listable` functions.
 
 After installing, search the Documentation Center for "BoolEval" to see usage examples. 
 
 BoolEval was inspired by the question [Does Mathematica have advanced indexing?](http://mathematica.stackexchange.com/q/2821/12) on the *Mathematica* StackExchange.
+
+A preview of this package is available as [the `BoolEval` function in the Wolfram Function Repository](https://resources.wolframcloud.com/FunctionRepository/resources/BoolEval).
 
 ### Installation
 
